@@ -1,0 +1,105 @@
+#--------LEAD CREATE UPDATE RETRIEVE LIST DELETE VIEW----------
+
+#CREATE
+###
+POST http://127.0.0.1:8000/lead/create/list
+Content-Type: application/json
+Authorization: Basic admin:admin
+
+{
+    "name":"fathi",
+    "phone":8765236111,
+    "email":"fathi@gmail.com",
+    "course":"Data Science",
+    "source":"call",
+    "status":"lost"
+}
+
+
+#LIST LEAD
+###
+GET http://127.0.0.1:8000/lead/create/list
+Authorization: Basic admin:admin
+
+
+#RETRIEVE ONE LEAD
+###
+GET http://127.0.0.1:8000/lead/detail/2
+Authorization: Basic admin:admin
+
+
+#UPDATE ONE LEAD
+###
+PUT http://127.0.0.1:8000/lead/detail/2
+Content-Type: application/json
+Authorization: Basic admin:admin
+
+{
+  "id": 2,
+  "name": "Manu",
+  "phone": "8765434466",
+  "email": "Manu@gmail.com",
+  "course": "MERN stack",
+  "source": "call",
+  "status": "new",
+  "added_date": "2026-10-14T15:22:45.274480Z",
+  "notes": "evening class preferred"
+}
+
+
+#DELETE ONE LEAD
+###
+DELETE http://127.0.0.1:8000/lead/detail/3
+Authorization: Basic admin:admin
+
+
+#--------FILTERING-------------
+#SEARCHING(STATUS=NEW)
+###
+GET http://127.0.0.1:8000/lead/create/list?search=new
+Authorization: Basic admin:admin
+
+
+#SEARCHING(SOURCE=REFERRAL)
+###
+GET http://127.0.0.1:8000/lead/create/list?search=referral
+Authorization: Basic admin:admin
+
+
+#SEARCHING(STATUS=LOST&SOURCE=REFERRAL)
+###
+GET http://127.0.0.1:8000/lead/create/list?search=lost referral
+Authorization: Basic admin:admin
+
+
+#SEARCHING(STATUS=NEW&SOURCE=CALL),IF NOT USED 'FILTERSET_FIELDS'
+###
+GET http://127.0.0.1:8000/lead/create/list?search=call new
+Authorization: Basic admin:admin
+
+
+#SEACHING(STATUS=NEW,SOURCE=CALL),IF 'FILTERSET_FIELDS' MENTIONED IN VIEWS
+###
+GET http://127.0.0.1:8000/lead/create/list?source=call&status=new
+Authorization: Basic admin:admin
+
+
+#-------------ORDERING--------------------
+#ORDERING(ADDED_DATE-ASCENDING ORDER))
+###
+GET http://127.0.0.1:8000/lead/create/list?ordering=added_date
+Authorization: Basic admin:admin
+
+
+#ORDERING(ADDED_DATE-DESCENDING ORDER)
+###
+GET http://127.0.0.1:8000/lead/create/list?ordering=-added_date
+Authorization: Basic admin:admin
+
+
+#ORDERING(ASCENDING ORDER OF NAME)
+###
+GET http://127.0.0.1:8000/lead/create/list?ordering=name
+Authorization: Basic admin:admin
+
+
