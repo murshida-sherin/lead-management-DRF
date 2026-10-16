@@ -1,4 +1,23 @@
-#--------LEAD CREATE UPDATE RETRIEVE LIST DELETE VIEW----------
+#--------TOKEN AUTHENTICATION-------------
+###
+POST http://127.0.0.1:8000/token
+Content-Type: application/json
+
+{
+    "username":"admin",
+    "password":"admin"
+}
+
+###
+@token=a06735b052b26bef279d82d9e20b0034e6cad977
+
+
+#LIST LEAD
+###
+GET http://127.0.0.1:8000/lead/create/list
+Authorization: Token {{token}}
+
+#--------LEAD CREATE UPDATE RETRIEVE LIST DELETE VIEW-BASIC AUTHENTICATION ----------
 
 #CREATE
 ###
@@ -103,3 +122,18 @@ GET http://127.0.0.1:8000/lead/create/list?ordering=name
 Authorization: Basic admin:admin
 
 
+
+
+#--------TOKEN AUTHENTICATION-------------
+###
+POST http://127.0.0.1:8000/token
+Content-Type: application/json
+
+{
+    "username":"admin",
+    "password":"admin"
+}
+
+
+###
+@token=a06735b052b26bef279d82d9e20b0034e6cad977

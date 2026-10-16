@@ -10,7 +10,8 @@ from rest_framework.filters import SearchFilter,OrderingFilter
 
 # Create your views here.
 class LeadCreateListView(CreateAPIView,ListAPIView):
-    authentication_classes=[authentication.BasicAuthentication]
+    # authentication_classes=[authentication.BasicAuthentication]
+    authentication_classes=[authentication.TokenAuthentication]
     permission_classes=[permissions.IsAuthenticated]
     serializer_class=LeadSerializer
     queryset=Lead.objects.all()
